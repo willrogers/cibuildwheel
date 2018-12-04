@@ -78,6 +78,7 @@ def build(project_dir, output_dir, test_command, test_requires, before_build, bu
                     # pure python wheel - just copy
                     mv "$built_wheel" /tmp/delocated_wheel
                 else
+                    auditwheel show "$built_wheel" -w /tmp/delocated_wheel
                     auditwheel repair "$built_wheel" -w /tmp/delocated_wheel
                 fi
                 delocated_wheel=(/tmp/delocated_wheel/*.whl)
